@@ -21,7 +21,7 @@ import lombok.Setter;
 @Entity
 public class Card {
   
-  public enum CardFace {
+  public enum Face {
     A(1),
     Two(2),
     Three(3),
@@ -39,12 +39,12 @@ public class Card {
     @Getter
     private int faceValue;
 
-    CardFace(int value) {
+    Face(int value) {
       this.faceValue = value;
     };
   };
   
-  public enum CardSuit {
+  public enum Suit {
     Hearts(1),
     Spades(2),
     Clubs(3),
@@ -53,7 +53,7 @@ public class Card {
     @Getter
     private int cardSuit;
 
-    CardSuit(int suit) {
+    Suit(int suit) {
       this.cardSuit = suit; 
     }
   };
@@ -72,12 +72,12 @@ public class Card {
   @Enumerated(EnumType.STRING)
   @Getter
   @Setter
-  private CardFace face;
+  private Face face;
 
   @Enumerated(EnumType.STRING)
   @Getter
   @Setter
-  private CardSuit suit;
+  private Suit suit;
 
   @Column(columnDefinition = "TIMESTAMP", nullable = false, updatable = false)
   @CreatedDate
@@ -89,7 +89,7 @@ public class Card {
   @Getter
   private Instant updatedAt;
 
-  public Card(CardFace face, CardSuit suit, Deck deck) {
+  public Card(Face face, Suit suit, Deck deck) {
     this.face = face;
     this.suit = suit;
     this.deck = deck;

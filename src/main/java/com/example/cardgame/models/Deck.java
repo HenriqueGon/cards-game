@@ -32,6 +32,12 @@ public class Deck {
   @Setter
   private Player player;
 
+  @ManyToOne
+  @JoinColumn(name = "game_id")
+  @Getter
+  @Setter
+  private Game game;
+
   @OneToMany(mappedBy = "deck")
   @Getter
   private List<Card> cards;
