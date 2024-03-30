@@ -46,4 +46,6 @@ public class Player {
   @LastModifiedDate
   @Getter
   private Instant updatedAt;
+
+  public Player() {}
 }

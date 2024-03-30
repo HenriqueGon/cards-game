@@ -52,6 +52,8 @@ public class Deck {
   @Getter
   private Instant updatedAt;
 
+  public Deck() {}
+
   public void setCards(List<Card> cards) {
     if (this.cards != null && this.cards.size() > 0)
       throw new Error("changing cards in a deck is not allowed");

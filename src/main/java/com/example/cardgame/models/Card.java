@@ -89,6 +89,8 @@ public class Card {
   @Getter
   private Instant updatedAt;
 
+  public Card() {}
+
   public Card(Face face, Suit suit, Deck deck) {
     this.face = face;
     this.suit = suit;

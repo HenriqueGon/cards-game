@@ -45,6 +45,8 @@ public class Game {
   @Getter
   private Instant updatedAt;
 
+  public Game() {}
+
   @PrePersist
   public void generateUuid() {
     this.uuid = UUID.randomUUID();
