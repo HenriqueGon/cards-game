@@ -48,4 +48,9 @@ public class Player {
   private Instant updatedAt;
 
   public Player() {}
+
+  public Player(Game game) {
+    this.game = game;
+  }
+    
 }
