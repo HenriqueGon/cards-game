@@ -34,17 +34,22 @@ public class Deck {
 
   @OneToMany(mappedBy = "deck")
   @Getter
-  @Setter
   private List<Card> cards;
 
   @Column(columnDefinition = "TIMESTAMP", nullable = false, updatable = false)
   @CreatedDate
   @Getter
-  private Instant created_at;
+  private Instant createdAt;
 
   @Column(columnDefinition = "TIMESTAMP", nullable = false)
   @LastModifiedDate
   @Getter
-  private Instant updated_at;
+  private Instant updatedAt;
 
+  public void setCards(List<Card> cards) {
+    if (this.cards != null && this.cards.size() > 0)
+      throw new Error("changing cards in a deck is not allowed");
+    this.cards = cards;
+  }
+  
 }

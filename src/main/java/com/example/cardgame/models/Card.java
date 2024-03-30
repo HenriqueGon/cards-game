@@ -37,10 +37,10 @@ public class Card {
     K(13);
 
     @Getter
-    private int face_value;
+    private int faceValue;
 
     CardFace(int value) {
-      this.face_value = value;
+      this.faceValue = value;
     };
   };
   
@@ -51,10 +51,10 @@ public class Card {
     Diamonds(4);
 
     @Getter
-    private int card_suit;
+    private int cardSuit;
 
     CardSuit(int suit) {
-      this.card_suit = suit; 
+      this.cardSuit = suit; 
     }
   };
 
@@ -71,20 +71,28 @@ public class Card {
 
   @Enumerated(EnumType.STRING)
   @Getter
-  private CardFace cardFace;
+  @Setter
+  private CardFace face;
 
   @Enumerated(EnumType.STRING)
   @Getter
+  @Setter
   private CardSuit suit;
 
   @Column(columnDefinition = "TIMESTAMP", nullable = false, updatable = false)
   @CreatedDate
   @Getter
-  private Instant created_at;
+  private Instant createdAt;
 
   @Column(columnDefinition = "TIMESTAMP", nullable = false)
   @LastModifiedDate
   @Getter
-  private Instant updated_at;
+  private Instant updatedAt;
+
+  public Card(CardFace face, CardSuit suit, Deck deck) {
+    this.face = face;
+    this.suit = suit;
+    this.deck = deck;
+  }
 
 }

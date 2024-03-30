@@ -40,10 +40,10 @@ public class Player {
   @Column(columnDefinition = "TIMESTAMP", nullable = false, updatable = false)
   @CreatedDate
   @Getter
-  private Instant created_at;
+  private Instant createdAt;
 
   @Column(columnDefinition = "TIMESTAMP", nullable = false)
   @LastModifiedDate
   @Getter
-  private Instant updated_at;
+  private Instant updatedAt;
 }

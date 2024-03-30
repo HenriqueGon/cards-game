@@ -2,8 +2,8 @@ package com.example.cardgame.models;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.UUID;
 
-import org.hibernate.annotations.UuidGenerator;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -13,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,8 +26,9 @@ public class Game {
   @Getter
   private Long id;
 
-  @UuidGenerator
-  private String uuid;
+  @Getter
+  @Column(unique = true, nullable = false)
+  private UUID uuid;
 
   @OneToMany(mappedBy = "game")
   @Getter
@@ -36,11 +38,16 @@ public class Game {
   @Column(columnDefinition = "TIMESTAMP", nullable = false, updatable = false)
   @CreatedDate
   @Getter
-  private Instant created_at;
+  private Instant createdAt;
 
   @Column(columnDefinition = "TIMESTAMP", nullable = false)
   @LastModifiedDate
   @Getter
-  private Instant updated_at;
+  private Instant updatedAt;
+
+  @PrePersist
+  public void generateUuid() {
+    this.uuid = UUID.randomUUID();
+  }
 
 }
