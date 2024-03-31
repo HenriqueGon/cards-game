@@ -45,7 +45,7 @@ public class GameService {
   }
 
   public Deck addDeck(UUID gameUuid) {
-    Deck deck = deckService.create(gameUuid);
+    Deck deck = deckService.addDeck(gameUuid);
 
     Game game = gameRepository.findOneByUuid(gameUuid).orElseThrow();
 
@@ -59,6 +59,10 @@ public class GameService {
   public Player addPlayer(UUID gameUuid, String nickname) {
     Game foundGame = gameRepository.findOneByUuid(gameUuid).orElseThrow();
     Player player = playerRepository.save(new Player(foundGame, nickname));
+
+    foundGame.getPlayers().add(player);
+
+    gameRepository.save(foundGame);
 
     return player;
   }
@@ -116,7 +120,6 @@ public class GameService {
 			currentPosition++;
 		}
 		cardRepository.saveAll(cards);
-
   }
   
 }

@@ -23,8 +23,14 @@ public class DeckService {
     return deckRepository.findAllDecksByGameUuid(gameUuid);
   }
 
-  public Deck create(UUID gameUuid) {
+  public Deck create() {
     Deck deck = new Deck();
+
+    return deckRepository.save(deck);
+  }
+
+  public Deck addDeck(UUID gameUuid) {
+    Deck deck = create();
 
     int decksCount = findAllGameDecks(gameUuid).size();
 
