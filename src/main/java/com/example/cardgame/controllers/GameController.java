@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,10 +57,20 @@ public class GameController {
     return gameService.dealCard(playerId, gameUuid);
   }
 
-  @PostMapping("/{uuid}")
+  @PostMapping("/{uuid}/shuffle")
+  public void shuffleCards(@PathVariable UUID gameUuid) {
+    gameService.shuffle(gameUuid);
+  }
+
+  @PostMapping("/{uuid}/players")
   @ResponseStatus(HttpStatus.CREATED)
   public Player addPlayer(@PathVariable UUID gameUuid, @PathVariable String nickname) {
     return gameService.addPlayer(gameUuid, nickname);
+  }
+
+  @DeleteMapping("/{uuid}/players/{id}")
+  public void removePlayer(@PathVariable UUID gameUuid, @PathVariable Long playerId) {
+    gameService.deletePlayer(gameUuid, playerId);
   }
   
 }
