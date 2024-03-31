@@ -38,6 +38,10 @@ public class GameService {
     return gameRepository.findAll();
   }
 
+  public List<Player> findAllPlayers(UUID gameUuid) {
+    return gameRepository.findAllPlayersByUuid(gameUuid);
+  }
+
   public Game create() {
     Game createdGame = new Game();
 

@@ -32,13 +32,18 @@ public class GameController {
   }
 
   @GetMapping("/{uuid}")
-  public Game find(@PathVariable UUID uuid) {
-    return gameService.find(uuid);
+  public Game find(@PathVariable UUID gameUuid) {
+    return gameService.find(gameUuid);
+  }
+
+  @GetMapping("/{uuid}/players")
+  public List<Player> findAllPlayers(@PathVariable UUID gameUuid) {
+    return gameService.findAllPlayers(gameUuid);
   }
 
   @GetMapping("/{uuid}/decks")
-  public List<Deck> getDecks(@PathVariable UUID uuid) {
-    return deckService.findAllGameDecks(uuid);
+  public List<Deck> getDecks(@PathVariable UUID gameUuid) {
+    return deckService.findAllGameDecks(gameUuid);
   }
 
   @PostMapping
@@ -48,8 +53,8 @@ public class GameController {
   }
 
   @PostMapping("/{uuid}/decks")
-  public Deck addDeck(@PathVariable UUID uuid) {
-    return gameService.addDeck(uuid);
+  public Deck addDeck(@PathVariable UUID gameUuid) {
+    return gameService.addDeck(gameUuid);
   }
 
   @PostMapping("/{uuid}/deal-cards")

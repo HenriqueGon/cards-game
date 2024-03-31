@@ -51,22 +51,22 @@ Follows, there are a mapping of features to the API.
 
 <b> Get, add and remove players from a game </b>
 
-  [POST] http://localhost:8080/games/:game_uuid/players
-  [GET] http://localhost:8080/games/:game_uuid/players
+  [POST]   http://localhost:8080/games/:game_uuid/players
+  [GET]    http://localhost:8080/games/:game_uuid/players
   [DELETE] http://localhost:8080/games/:game_uuid/players/:player_id
 
 <b> Deal cards to a player in a game from the game deck </b>
 
-  [POST] http://localhost:8080/games/:game_uuid/deal-cards
+  [POST]   http://localhost:8080/games/:game_uuid/deal-cards
   body: { playerId: number }
 
 <b> Get the list of cards for a player </b>
 
-  [GET] http://localhost:8080/players/:player_id/cards
+  [GET]    http://localhost:8080/players/:player_id/cards
 
 <b> Shuffle the game deck </b>
 
-  [POST] http://localhost:8080/games/:game_uuid/shuffle
+  [POST]   http://localhost:8080/games/:game_uuid/shuffle
 
 # Known limitations
 
