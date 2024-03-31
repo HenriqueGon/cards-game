@@ -33,6 +33,11 @@ public class Game {
   @OneToMany(mappedBy = "game")
   @Getter
   @Setter
+  private List<Player> players;
+
+  @OneToMany(mappedBy = "game")
+  @Getter
+  @Setter
   private List<Deck> decks;
 
   @Column(columnDefinition = "TIMESTAMP", nullable = false, updatable = false)

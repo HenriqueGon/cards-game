@@ -14,7 +14,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,16 +25,19 @@ public class Player {
   @Getter
   private Long id;
   
+  @OneToMany(mappedBy = "player")
+  @Getter
+  private List<Card> cards;
+
   @ManyToOne
   @JoinColumn(name = "game_id")
   @Getter
   @Setter
   private Game game;
 
-  @OneToMany(mappedBy = "player")
   @Getter
   @Setter
-  private List<Deck> decks;
+  private String nickname;
 
   @Column(columnDefinition = "TIMESTAMP", nullable = false, updatable = false)
   @CreatedDate
@@ -49,8 +51,9 @@ public class Player {
 
   public Player() {}
 
-  public Player(Game game) {
+  public Player(Game game, String nickname) {
     this.game = game;
+    this.nickname = nickname;
   }
     
 }

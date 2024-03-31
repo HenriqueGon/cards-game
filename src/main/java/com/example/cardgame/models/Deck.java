@@ -27,12 +27,6 @@ public class Deck {
   private Long id;
 
   @ManyToOne
-  @JoinColumn(name = "player_id")
-  @Getter
-  @Setter
-  private Player player;
-
-  @ManyToOne
   @JoinColumn(name = "game_id")
   @Getter
   @Setter
@@ -56,7 +50,7 @@ public class Deck {
 
   public void setCards(List<Card> cards) {
     if (this.cards != null && this.cards.size() > 0)
-      throw new Error("changing cards in a deck is not allowed");
+      throw new Error("Changing cards in a deck is not allowed");
     this.cards = cards;
   }
   

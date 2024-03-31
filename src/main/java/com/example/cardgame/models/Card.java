@@ -69,6 +69,16 @@ public class Card {
   @Setter
   private Deck deck;
 
+  @ManyToOne
+  @JoinColumn(name = "player_id")
+  @Getter
+  @Setter
+  private Player player;
+
+  @Getter
+  @Setter
+  private Integer index;
+
   @Enumerated(EnumType.STRING)
   @Getter
   @Setter
