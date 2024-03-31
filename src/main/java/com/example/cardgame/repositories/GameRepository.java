@@ -10,7 +10,7 @@ import com.example.cardgame.models.Game;
 
 @Repository
 public interface GameRepository extends JpaRepository<Game, Long>{
-
+  
   public Optional<Game> findOneByUuid(UUID uuid);
 
 }
