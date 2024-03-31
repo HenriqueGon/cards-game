@@ -51,7 +51,7 @@ public class GameController {
     return gameService.addDeck(uuid);
   }
 
-  @PostMapping("/{uuid}/dealCards")
+  @PostMapping("/{uuid}/deal-cards")
   public List<Card> dealCards(@PathVariable Long playerId, @PathVariable UUID gameUuid) {
     return gameService.dealCard(playerId, gameUuid);
   }
