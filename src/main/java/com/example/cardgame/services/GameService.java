@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 
@@ -21,9 +22,13 @@ import com.example.cardgame.repositories.PlayerRepository;
 @Transactional
 public class GameService {
 
+  @Autowired
   private GameRepository gameRepository;
+  @Autowired
   private DeckRepository deckRepository;
+  @Autowired
   private PlayerRepository playerRepository;
+  @Autowired
   private CardRepository cardRepository;
 
   private DeckService deckService;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 
@@ -17,6 +18,7 @@ import com.example.cardgame.repositories.DeckRepository;
 @Transactional
 public class DeckService {
 
+  @Autowired
   private DeckRepository deckRepository;
 
   public List<Deck> findAllGameDecks(UUID gameUuid) {

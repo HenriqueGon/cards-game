@@ -1,6 +1,7 @@
 package com.example.cardgame.controllers;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -10,6 +11,7 @@ import com.example.cardgame.models.Deck;
 
 import com.example.cardgame.services.DeckService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/decks")
 public class DeckController {

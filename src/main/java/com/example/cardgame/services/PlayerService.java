@@ -2,6 +2,7 @@ package com.example.cardgame.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
@@ -16,6 +17,7 @@ import com.example.cardgame.repositories.PlayerRepository;
 @Transactional
 public class PlayerService {
 
+	@Autowired
   private PlayerRepository playerRepository;
 
 	public Player create(Game game, String nickname) {
