@@ -39,7 +39,7 @@ public class Card {
     @Getter
     private int faceValue;
 
-    Face(int value) {
+    private Face(int value) {
       this.faceValue = value;
     };
   };
@@ -53,7 +53,7 @@ public class Card {
     @Getter
     private int cardSuit;
 
-    Suit(int suit) {
+    private Suit(int suit) {
       this.cardSuit = suit; 
     }
   };
@@ -89,12 +89,12 @@ public class Card {
   @Setter
   private Suit suit;
 
-  @Column(columnDefinition = "TIMESTAMP", nullable = false, updatable = false)
+  @Column(columnDefinition = "TIMESTAMP", updatable = false)
   @CreatedDate
   @Getter
   private Instant createdAt;
 
-  @Column(columnDefinition = "TIMESTAMP", nullable = false)
+  @Column(columnDefinition = "TIMESTAMP")
   @LastModifiedDate
   @Getter
   private Instant updatedAt;

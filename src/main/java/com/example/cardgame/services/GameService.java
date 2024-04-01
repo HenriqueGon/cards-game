@@ -14,7 +14,6 @@ import com.example.cardgame.models.Deck;
 import com.example.cardgame.models.Game;
 import com.example.cardgame.models.Player;
 import com.example.cardgame.repositories.CardRepository;
-import com.example.cardgame.repositories.DeckRepository;
 import com.example.cardgame.repositories.GameRepository;
 import com.example.cardgame.repositories.PlayerRepository;
 
@@ -25,14 +24,14 @@ public class GameService {
   @Autowired
   private GameRepository gameRepository;
   @Autowired
-  private DeckRepository deckRepository;
-  @Autowired
   private PlayerRepository playerRepository;
   @Autowired
   private CardRepository cardRepository;
 
+  @Autowired
   private DeckService deckService;
   private GameService gameService;
+
   private PlayerService playerService;
 
   public Game find(UUID gameUuid) {
@@ -53,16 +52,10 @@ public class GameService {
     return gameRepository.save(createdGame);
   }
 
-  public Deck addDeck(UUID gameUuid) {
-    Deck deck = deckService.addDeck(gameUuid);
-
+  public void addDeck(UUID gameUuid) {
     Game game = gameRepository.findOneByUuid(gameUuid).orElseThrow();
-
-    deck.setGame(game);
-
-    deckRepository.save(deck);
-
-    return deck;
+    
+    deckService.addDeck(game);
   }
 
   public Player addPlayer(UUID gameUuid, String nickname) {

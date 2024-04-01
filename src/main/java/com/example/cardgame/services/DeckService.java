@@ -12,6 +12,7 @@ import com.example.cardgame.models.Card;
 import com.example.cardgame.models.Card.Face;
 import com.example.cardgame.models.Card.Suit;
 import com.example.cardgame.models.Deck;
+import com.example.cardgame.models.Game;
 import com.example.cardgame.repositories.DeckRepository;
 
 @Service
@@ -25,36 +26,25 @@ public class DeckService {
     return deckRepository.findAllDecksByGameUuid(gameUuid);
   }
 
-  public Deck create() {
+  public Deck addDeck(Game game) {
     Deck deck = new Deck();
 
-    return deckRepository.save(deck);
-  }
+    List<Card> cards = createCards(deck);
 
-  public Deck addDeck(UUID gameUuid) {
-    Deck deck = create();
-
-    int decksCount = findAllGameDecks(gameUuid).size();
-
-    deck.setCards(createCards(deck, decksCount * 52));
+    deck.setGame(game);
+    deck.setCards(cards);
 
     return deckRepository.save(deck);
   }
 
-  public List<Card> createCards(Deck deck, int decksCount) {    
+  public List<Card> createCards(Deck deck) {    
 		List<Card> cards = new ArrayList<Card>();
 
-    int index = 0; 
-
-    do {
-      for (Suit suit : Suit.values()) {
-        for (Face face : Face.values()) {
-          cards.add(new Card(face, suit, deck));
-        }
-
-        index++;
+    for (Suit suit : Suit.values()) {
+      for (Face face : Face.values()) {
+        cards.add(new Card(face, suit, deck));
       }
-    } while (index <= decksCount);
+    }
 		
 		return cards;
 	}

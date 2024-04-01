@@ -36,12 +36,12 @@ public class Deck {
   @Getter
   private List<Card> cards;
 
-  @Column(columnDefinition = "TIMESTAMP", nullable = false, updatable = false)
+  @Column(columnDefinition = "TIMESTAMP", updatable = false)
   @CreatedDate
   @Getter
   private Instant createdAt;
 
-  @Column(columnDefinition = "TIMESTAMP", nullable = false)
+  @Column(columnDefinition = "TIMESTAMP")
   @LastModifiedDate
   @Getter
   private Instant updatedAt;

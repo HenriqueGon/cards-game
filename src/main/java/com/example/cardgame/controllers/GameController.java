@@ -58,8 +58,8 @@ public class GameController {
   }
 
   @PostMapping("/{uuid}/decks")
-  public Deck addDeck(@PathVariable UUID uuid) {
-    return gameService.addDeck(uuid);
+  public void addDeck(@PathVariable UUID uuid) {
+    gameService.addDeck(uuid);
   }
 
   @PostMapping("/{uuid}/deal-cards")
