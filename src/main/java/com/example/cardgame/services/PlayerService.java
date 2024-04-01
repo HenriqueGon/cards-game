@@ -1,6 +1,7 @@
 package com.example.cardgame.services;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,10 @@ public class PlayerService {
 
 	public Player find(Long id) {
 		return playerRepository.findById(id).orElseThrow();
+	}	
+
+	public List<Player> findAll(UUID gameUuid) {
+		return playerRepository.findAllByGameUuid(gameUuid);
 	}
 
 	public List<Card> getCards(Long id) {

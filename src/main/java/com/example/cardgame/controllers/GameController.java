@@ -22,6 +22,7 @@ import com.example.cardgame.models.Game;
 import com.example.cardgame.models.Player;
 import com.example.cardgame.services.DeckService;
 import com.example.cardgame.services.GameService;
+import com.example.cardgame.services.PlayerService;
 
 @CrossOrigin
 @RestController
@@ -32,6 +33,8 @@ public class GameController {
   private GameService gameService;
   @Autowired
   private DeckService deckService;
+  @Autowired
+  private PlayerService playerService;
 
   @GetMapping
   public List<Game> getAll() {
@@ -45,7 +48,7 @@ public class GameController {
 
   @GetMapping("/{uuid}/players")
   public List<Player> findAllPlayers(@PathVariable UUID uuid) {
-    return gameService.findAllPlayers(uuid);
+    return playerService.findAll(uuid);
   }
 
   @GetMapping("/{uuid}/decks")

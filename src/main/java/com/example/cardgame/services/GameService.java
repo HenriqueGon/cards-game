@@ -43,7 +43,7 @@ public class GameService {
   }
 
   public List<Player> findAllPlayers(UUID gameUuid) {
-    List<Player> player = gameRepository.findAllPlayersByUuid(gameUuid);
+    List<Player> player = playerService.findAll(gameUuid);
     return player;
   }
 
