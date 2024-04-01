@@ -6,6 +6,9 @@ import java.util.List;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,10 +33,12 @@ public class Deck {
   @JoinColumn(name = "game_id")
   @Getter
   @Setter
+  @JsonBackReference
   private Game game;
 
   @OneToMany(mappedBy = "deck")
   @Getter
+  @JsonManagedReference
   private List<Card> cards;
 
   @Column(columnDefinition = "TIMESTAMP", updatable = false)

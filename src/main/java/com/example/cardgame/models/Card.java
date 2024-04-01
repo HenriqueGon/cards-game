@@ -5,6 +5,8 @@ import java.time.Instant;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -67,12 +69,14 @@ public class Card {
   @JoinColumn(name = "deck_id")
   @Getter
   @Setter
+  @JsonBackReference
   private Deck deck;
 
   @ManyToOne
   @JoinColumn(name = "player_id")
   @Getter
   @Setter
+  @JsonBackReference
   private Player player;
 
   @Getter

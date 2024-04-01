@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -63,7 +65,8 @@ public class GameController {
   }
 
   @PostMapping("/{uuid}/deal-cards")
-  public List<Card> dealCards(@PathVariable Long playerId, @PathVariable UUID uuid) {
+  @ResponseBody
+  public List<Card> dealCards(@RequestParam Long playerId, @PathVariable UUID uuid) {
     return gameService.dealCard(playerId, uuid);
   }
 
@@ -74,12 +77,14 @@ public class GameController {
 
   @PostMapping("/{uuid}/players")
   @ResponseStatus(HttpStatus.CREATED)
-  public Player addPlayer(@PathVariable UUID uuid, @PathVariable String nickname) {
+  @ResponseBody
+  public Player addPlayer(@PathVariable UUID uuid, @RequestParam String nickname) {
     return gameService.addPlayer(uuid, nickname);
   }
 
   @DeleteMapping("/{uuid}/players/{id}")
-  public void removePlayer(@PathVariable UUID uuid, @PathVariable Long playerId) {
+  @ResponseBody
+  public void removePlayer(@PathVariable UUID uuid, @RequestParam Long playerId) {
     gameService.deletePlayer(uuid, playerId);
   }
   

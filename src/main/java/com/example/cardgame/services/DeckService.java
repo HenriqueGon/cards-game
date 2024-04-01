@@ -23,7 +23,9 @@ public class DeckService {
   private DeckRepository deckRepository;
 
   public List<Deck> findAllGameDecks(UUID gameUuid) {
-    return deckRepository.findAllDecksByGameUuid(gameUuid);
+    List<Deck> deck = deckRepository.findAllDecksByGameUuid(gameUuid);
+
+    return deck;
   }
 
   public Deck addDeck(Game game) {
